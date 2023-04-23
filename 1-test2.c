@@ -18,40 +18,42 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	if (*format == '%')
-	{
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		switch (format[i])
+		if (*format == '%')
 		{
-			case 'c':
+			switch (format[i])
 			{
-				num += test(va_arg(ap, int));
-				break;
-			}
-			case 's':
-			{
-				str = va_arg(ap, char *);
-				while(*str != '\0')
+				case 'c':
 				{
-					num += test(*str);
-					str++;
+					num += test(va_arg(ap, int));
+					break;
 				}
-				break;
+				case 's':
+				{
+					str = va_arg(ap, char *);
+					while(*str != '\0')
+					{
+						num += test(*str);
+						str++;
+					}
+					break;
+				}
+				case '%':
+				{
+					num += test('%');
+					break;
+				}
+				default:
+					break;
 			}
-			case '%':
+
+			else
 			{
-				num += test('%');
-				break;
+				num += test(*format);
 			}
-			default:
-				break;
 		}
-	}
-	else
-	{
-		test('print');
-	}
 	}
 	va_end(ap);
 	return (num);
