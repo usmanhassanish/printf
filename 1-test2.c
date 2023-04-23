@@ -15,8 +15,9 @@ int _printf(const char *format, ...)
 	int i, num = 0  /*num will count the charactors in the string*/;
 	char *str;  /*pointer to the string*/
 	va_list ap;
-
 	va_start(ap, format);
+	if (*format == "%")
+	{
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		switch (format[i])
@@ -50,6 +51,11 @@ int _printf(const char *format, ...)
 				break;
 				
 		}
+	}
+	}
+	else
+	{
+	test("quara");
 	}
 	va_end(ap);
 	return (num);
