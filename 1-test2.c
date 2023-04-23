@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (*format == '%')
+		if (format[i] == '%')
 		{
 			switch (format[i])
 			{
@@ -48,11 +48,10 @@ int _printf(const char *format, ...)
 				default:
 					break;
 			}
-
-			else
-			{
-				num += test(*format);
-			}
+		}
+		else
+		{
+			num += test(*format);
 		}
 	}
 	va_end(ap);
