@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(ap, const char *);
-					while (*str)
+					while (*str != '\0')
 					{
 						num += _putchar(*str);
 						str++;
