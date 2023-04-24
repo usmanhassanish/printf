@@ -2,13 +2,9 @@
 #include "main.h"
 
 /**
- * README
- * i created the variadic function
- * the complier tells me: "implicite declaration of the test function"
- * i forgot how we used it in out example
- * @num: this is what we will return
- * Return: we needed to return the number of charactors 
- * not the char themselves
+ * _printf - prints number of charactors
+ * @format: pointer
+ * Return: number of charactors
  */
 
 int _printf(const char *format, ...)
@@ -18,7 +14,6 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -26,25 +21,19 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-				{
 					num += _putchar(va_arg(ap, int));
 					break;
-				}
 				case 's':
-				{
 					str = va_arg(ap, char *);
-					while(*str != '\0')
+					while (*str != '\0')
 					{
 						num += _putchar(*str);
 						str++;
 					}
 					break;
-				}
 				case '%':
-				{
 					num += _putchar('%');
 					break;
-				}
 				default:
 					break;
 			}
