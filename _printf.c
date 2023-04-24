@@ -27,8 +27,6 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	if (format == NULL)
-		return (-1);
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -40,8 +38,8 @@ int _printf(const char *format, ...)
 					num += _putchar(va_arg(ap, int));
 					break;
 				case 's':
-					str = va_arg(ap, char *);
-					while (*str != '\0')
+					str = va_arg(ap, const char *);
+					while (*str)
 					{
 						num += _putchar(*str);
 						str++;
