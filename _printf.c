@@ -22,18 +22,19 @@ int _putchar(char c)
 
 int _printf(const char *format, ...)
 {
-	int i, num = 0;
+	int num = 0;
 	const char *str;
 	va_list ap;
 
 	va_start(ap, format);
 	if (format == NULL)
 		return (-1);
-	for (i = 0; format[i] != '\0'; i++)
+	while (*format != '\0')
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			switch (format[i])
+			format++;
+			switch (*format)
 			{
 				case 'c':
 					num += _putchar(va_arg(ap, int));
