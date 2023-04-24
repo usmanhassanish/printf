@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			format++;
 			switch (*format)
 			{
-				case 'c': case 'd': case 'i':
+				case 'c':
 					num += _putchar(va_arg(ap, int));
 					break;
 				case 's':
