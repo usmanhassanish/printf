@@ -60,5 +60,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(ap);
-	return (num - 1);
+	return (num);
 }
