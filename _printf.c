@@ -1,7 +1,6 @@
 #include <stdarg.h>
 #include "main.h"
 #include <stddef.h>
-
 #include <unistd.h>
 
 /**
@@ -61,5 +60,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(ap);
-	return (num);
+	return (num - 1);
 }
