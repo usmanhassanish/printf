@@ -54,6 +54,8 @@ int _putint(int n)
 int handle_format_specifier(char spec, va_list ap)
 {
 	int num = 0;
+	int i,j;len;
+	i = 0;
 	const char *str;
 
 	switch (spec)
@@ -67,6 +69,18 @@ int handle_format_specifier(char spec, va_list ap)
 		{
 			num += _putchar(*str);
 			str++;
+		}
+		break;
+	case 'r':
+		str = va_arg(ap, const char *);
+		while (str[i] != '\0')
+		{
+			i++;
+		}
+		len = i;
+		for (j = len - 1; j >= 0; j--)
+		{
+		num += _putchar(str[j]);
 		}
 		break;
 	case 'd': case 'i':
