@@ -13,26 +13,7 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-/**
- * _putbin - writes the binary representation of an unsigned integer to stdout
- * @n: The unsigned integer to print in binary
- * Return: On success the number of characters printed.
- */
-int _putbin(unsigned int n)
-{
-	int len = 0;
-	unsigned int mask = 1 << ((sizeof(unsigned int) * 8) - 1);
 
-	while (mask != 0)
-	{
-	if (n & mask)
-		len += _putchar('1');
-	else
-		len += _putchar('0');
-		mask >>= 1;
-	}
-	return (len);
-}
 /**
  * _putint - writes the integer n to stdout
  * @n: The integer to print
@@ -86,8 +67,6 @@ int handle_format_specifier(char spec, va_list ap)
 			str++;
 		}
 		break;
-	case 'b':
-		num += _putbin(va_arg(ap, int));
 	case 'd': case 'i':
 		num += _putint(va_arg(ap, int));
 		break;
