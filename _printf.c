@@ -70,6 +70,9 @@ int handle_format_specifier(char spec, va_list ap)
 	case 'd': case 'i':
 		num += _putint(va_arg(ap, int));
 		break;
+	case 'b':
+		num += _putint(va_arg(ap, int));
+		break;
 	case '%':
 		num += _putchar('%');
 		break;
