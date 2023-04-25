@@ -2,46 +2,6 @@
 #include "main.h"
 #include <stddef.h>
 #include <unistd.h>
-
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
- * _putint - writes the integer n to stdout
- * @n: The integer to print
- *
- * Return: On success the number of characters printed.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putint(int n)
-{
-	int div = 1, len = 0;
-
-	if (n < 0)
-	{
-		len += _putchar('-');
-		n *= -1;
-	}
-	while (n / div >= 10)
-		div *= 10;
-	while (div != 0)
-	{
-		len += _putchar((n / div) + '0');
-		n %= div;
-		div /= 10;
-	}
-	return (len);
-}
-
 /**
  * handle_format_specifier - handles format specifier and writes to stdout
  * @spec: format specifier character
@@ -56,29 +16,29 @@ int handle_format_specifier(char spec, va_list ap)
 
 	switch (spec)
 	{
-	case 'c':
-		num += _putchar(va_arg(ap, int));
-		break;
-	case 's':
-		str = va_arg(ap, const char *);
-		while (*str != '\0')
-		{
-			num += _putchar(*str);
-			str++;
-		}
-		break;
-	case 'd': case 'i':
-		num += _putint(va_arg(ap, int));
-		break;
-	case '%':
-		num += _putchar('%');
-		break;
-	default:
-		break;
+		case 'c':
+			num += _putchar(va_arg(ap, int));
+			break;
+		case 's':
+			str = va_arg(ap, const char *);
+			while (*str != '\0')
+			{
+				num += _putchar(*str);
+				str++;
+			}
+			break;
+		case 'd': case 'i': case 'b':
+			num += _putint(va_arg(ap, int));
+			break;
+		case '%':
+			num += _putchar('%');
+			break;
+			break;
+		default:
+			break;
 	}
 	return (num);
 }
-
 /**
  * _printf - prints formatted output to stdout
  * @format: pointer to format string
@@ -100,6 +60,13 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			num += handle_format_specifier(*format, ap);
+		}
+		if (*format == "%b")
+		{
+			format++;
+			to _unsigned(num);
+			num += handle_format_specifier(*format, ap);
+			to_binary(num);
 		}
 		else
 		{
