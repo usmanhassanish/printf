@@ -1,6 +1,5 @@
-#ifndef MAIN_H_
-#define MAIN_H_
-#define BUFFER_SIZE 1024
+#ifndef MAIN_H
+#define MAIN_H
 
 int _printf(const char *format, ...);
 int _putchar(char c);
