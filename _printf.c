@@ -14,16 +14,81 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-/**
- * _printf - prints number of charactors
- * @format: pointer
- * Return: number of charactors
- */
 
-int _printf(const char *format, ...)
+/**
+ * _putint - writes the integer n to stdout
+ * @n: The integer to print
+ *
+ * Return: On success the number of characters printed.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putint(int n)
+{
+	int div = 1, len = 0;
+
+	if (n < 0)
+	{
+	len += _putchar('-');
+	n *= -1;
+	}
+	while (n / div >= 10)
+		div *= 10;
+	while (div != 0)
+	{
+	len += _putchar((n / div) + '0');
+	n %= div;
+	div /= 10;
+	}
+	return (len);
+}
+
+/**
+ * handle_format_specifier - handles format specifier and writes to stdout
+ * @spec: format specifier character
+ * @ap: va_list argument pointer
+ *
+ * Return: number of characters written to stdout
+ */
+int handle_format_specifier(char spec, va_list ap)
 {
 	int num = 0;
 	const char *str;
+
+	switch (spec)
+	{
+	case 'c':
+		num += _putchar(va_arg(ap, int));
+		break;
+	case 's':
+		str = va_arg(ap, const char *);
+		while (*str != '\0')
+		{
+			num += _putchar(*str);
+			str++;
+		}
+		break;
+	case 'd': case 'i':
+		num += _putint(va_arg(ap, int));
+		break;
+	case '%':
+		num += _putchar('%');
+		break;
+	default:
+		break;
+	}
+	return (num);
+}
+
+/**
+ * _printf - prints formatted output to stdout
+ * @format: pointer to format string
+ * @...: variable number of additional arguments
+ *
+ * Return: number of characters written to stdout
+ */
+int _printf(const char *format, ...)
+{
+	int num = 0;
 	va_list ap;
 
 	va_start(ap, format);
@@ -34,25 +99,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
-			{
-				case 'c':
-					num += _putchar(va_arg(ap, int));
-					break;
-				case 's':
-					str = va_arg(ap, const char *);
-					while (*str != '\0')
-					{
-						num += _putchar(*str);
-						str++;
-					}
-					break;
-				case '%':
-					num += _putchar('%');
-					break;
-				default:
-					break;
-			}
+			num += handle_format_specifier(*format, ap);
 		}
 		else
 		{
