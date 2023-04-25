@@ -76,6 +76,12 @@ int handle_format_specifier(char spec, va_list ap)
 	case '%':
 		num += _putchar('%');
 		break;
+	case 'r':
+		num += _putchar(' ');
+		break;
+	case 'R':
+		num += _putchar(' ');
+		break;
 	default:
 		break;
 	}
