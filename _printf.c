@@ -28,16 +28,16 @@ int _putint(int n)
 
 	if (n < 0)
 	{
-	len += _putchar('-');
-	n *= -1;
+		len += _putchar('-');
+		n *= -1;
 	}
 	while (n / div >= 10)
 		div *= 10;
 	while (div != 0)
 	{
-	len += _putchar((n / div) + '0');
-	n %= div;
-	div /= 10;
+		len += _putchar((n / div) + '0');
+		n %= div;
+		div /= 10;
 	}
 	return (len);
 }
