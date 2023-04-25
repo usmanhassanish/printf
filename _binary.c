@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include "main.h"
 /**
  * to_binary - converts int to binary
  * @num: int

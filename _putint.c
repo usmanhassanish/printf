@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  * _putint - writes the integer n to stdout
  * @n: The integer to print
