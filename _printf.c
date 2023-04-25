@@ -2,7 +2,6 @@
 #include "main.h"
 #include <stddef.h>
 #include <unistd.h>
-
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -14,7 +13,6 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-
 /**
  * _putbin - writes the binary representation of an unsigned integer to stdout
  * @n: The unsigned integer to print in binary
@@ -48,20 +46,21 @@ int _putint(int n)
 
 	if (n < 0)
 	{
-	len += _putchar('-');
-	n *= -1;
+		len += _putchar('-');
+		n *= -1;
 	}
 	while (n / div >= 10)
+	{
 		div *= 10;
+	}
 	while (div != 0)
 	{
-	len += _putchar((n / div) + '0');
-	n %= div;
-	div /= 10;
+		len += _putchar((n / div) + '0');
+		n %= div;
+		div /= 10;
 	}
 	return (len);
 }
-
 /**
  * handle_format_specifier - handles format specifier and writes to stdout
  * @spec: format specifier character
@@ -100,7 +99,6 @@ int handle_format_specifier(char spec, va_list ap)
 	}
 	return (num);
 }
-
 /**
  * _printf - prints formatted output to stdout
  * @format: pointer to format string
