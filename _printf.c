@@ -3,6 +3,45 @@
 #include <stddef.h>
 #include <unistd.h>
 /**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+/**
+ * _putint - writes the integer n to stdout
+ * @n: The integer to print
+ *
+ * Return: On success the number of characters printed.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putint(int n)
+{
+	int div = 1, len = 0;
+
+	if (n < 0)
+	{
+		len += _putchar('-');
+		n *= -1;
+	}
+	while (n / div >= 10)
+	{
+		div *= 10;
+	}
+	while (div != 0)
+	{
+		len += _putchar((n / div) + '0');
+		n %= div;
+		div /= 10;
+	}
+	return (len);
+}
+/**
  * handle_format_specifier - handles format specifier and writes to stdout
  * @spec: format specifier character
  * @ap: va_list argument pointer
