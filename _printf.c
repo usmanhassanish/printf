@@ -100,13 +100,6 @@ int _printf(const char *format, ...)
 			format++;
 			num += handle_format_specifier(*format, ap);
 		}
-		if (*format == "%b")
-		{
-			format++;
-			to _unsigned(num);
-			num += handle_format_specifier(*format, ap);
-			to_binary(num);
-		}
 		else
 		{
 			num += _putchar(*format);
