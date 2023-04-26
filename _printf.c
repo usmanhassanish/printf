@@ -77,18 +77,11 @@ int handle_format_specifier(char spec, va_list ap)
 		break;
 	case 's':
 		str = va_arg(ap, const char *);
-		if (str == NULL)
+		while (*str != '\0')
 		{
-			printf("(null)\n");
-		}
-		else
-		{
-			while (*str != '\0')
-			{
-				_putchar(*str);
-				str++;
-				num++;
-			}
+			_putchar(*str);
+			str++;
+			num++;
 		}
 		break;
 	case 'd': case 'i':
