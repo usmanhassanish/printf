@@ -124,6 +124,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			num = _putchar(*format);
+			num++;
 		}
 		format++;
 	}
