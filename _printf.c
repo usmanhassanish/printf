@@ -112,7 +112,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	if (format == NULL)
+	if (!format && format == NULL)
 		return (0);
 	while (*format != '\0')
 	{
