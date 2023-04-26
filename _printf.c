@@ -1,4 +1,5 @@
 #include <stdarg.h>
+#include <stdio.h>
 #include "main.h"
 #include <stddef.h>
 #include <unistd.h>
@@ -45,14 +46,27 @@ int _putint(int n)
 	return (len);
 }
 /**
+ * binary - converts to binary
+ * @n: int
+ * Return: void
+ */
+void binary(unsigned int n)
+{
+	if (n > 1)
+	{
+		binary(n / 2);
+	}
+	_putchar('0' + (n % 2));
+}
+/**
  * handle_format_specifier - handles format specifier and writes to stdout
  * @spec: format specifier character
  * @ap: va_list argument pointer
- *
  * Return: number of characters written to stdout
  */
 int handle_format_specifier(char spec, va_list ap)
 {
+	unsigned int n;
 	int num = 0;
 	const char *str;
 
@@ -63,27 +77,30 @@ int handle_format_specifier(char spec, va_list ap)
 		break;
 	case 's':
 		str = va_arg(ap, const char *);
-		if (*str == NULL)
+		if (str == NULL)
 		{
-			num = _putchar(NULL);
+			printf("(null)\n");
 		}
-		while (*str != '\0')
+		else
 		{
-			num += _putchar(*str);
-			str++;
+			while (*str != '\0')
+			{
+				_putchar(*str);
+				str++;
+				num++;
+			}
 		}
 		break;
 	case 'd': case 'i':
 		num += _putint(va_arg(ap, int));
 		break;
 	case 'b':
-		num += _putint(va_arg(ap, int));
+		n = va_arg(ap, unsigned int);
+		binary(n);
+		num++;
 		break;
 	case '%':
 		num = _putchar('%');
-		break;
-	case 'R':
-		num += _putchar(' ');
 		break;
 	default:
 		break;
@@ -94,7 +111,6 @@ int handle_format_specifier(char spec, va_list ap)
  * _printf - prints formatted output to stdout
  * @format: pointer to format string
  * @...: variable number of additional arguments
- *
  * Return: number of characters written to stdout
  */
 int _printf(const char *format, ...)
