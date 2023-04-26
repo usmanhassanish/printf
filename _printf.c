@@ -76,7 +76,7 @@ int handle_format_specifier(char spec, va_list ap)
 		num += _putint(va_arg(ap, int));
 		break;
 	case '%':
-		num += _putchar('%');
+		num = _putchar(' ');
 		break;
 	case 'R':
 		num += _putchar(' ');
