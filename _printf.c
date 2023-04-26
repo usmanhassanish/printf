@@ -112,8 +112,8 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	if (!format && format == NULL)
-		return (-1);
+	if (format == NULL)
+		return (NULL);
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -123,8 +123,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			num = _putchar(*format);
-			num++;
+			num += _putchar(*format);
 		}
 		format++;
 	}
