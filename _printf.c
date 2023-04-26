@@ -113,7 +113,7 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 	if (format == NULL)
-		return (NULL);
+		return ((nil));
 	while (*format != '\0')
 	{
 		if (*format == '%')
