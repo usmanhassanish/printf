@@ -63,6 +63,10 @@ int handle_format_specifier(char spec, va_list ap)
 		break;
 	case 's':
 		str = va_arg(ap, const char *);
+		if (*str == NULL)
+		{
+			num = _putchar(NULL);
+		}
 		while (*str != '\0')
 		{
 			num += _putchar(*str);
