@@ -88,8 +88,11 @@ int handle_format_specifier(char spec, va_list ap)
 		num += _putint(va_arg(ap, int));
 		break;
 	case 'b':
-		binary(abs(num));
-		_putchar(num);
+		abs(binary(num));
+		while (*str != '\0')
+		{
+			str++;
+		}
 		num++;
 		break;
 	case '%':
