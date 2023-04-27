@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 #include <stddef.h>
 #include <unistd.h>
@@ -66,7 +67,6 @@ void binary(unsigned int n)
  */
 int handle_format_specifier(char spec, va_list ap)
 {
-	unsigned int n;
 	int num = 0;
 	const char *str;
 
@@ -88,9 +88,8 @@ int handle_format_specifier(char spec, va_list ap)
 		num += _putint(va_arg(ap, int));
 		break;
 	case 'b':
-		n = va_arg(ap, unsigned int);
-		binary(n);
-		num++;
+		num += _putint(va_arg(ap, int));
+		binary(abs(num));
 		break;
 	case '%':
 		num = _putchar('%');
