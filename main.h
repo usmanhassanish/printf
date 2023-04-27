@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+int _putuint(unsigned int num);
 int _printf(const char *format, ...);
 int _putchar(char c);
 char *to_binary(unsigned int num);

@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
 #include "main.h"
 #include <stddef.h>
@@ -48,16 +48,16 @@ int _putint(int n)
 }
 /**
  * binary - converts to binary
- * @n: int
+ * @num: int
  * Return: void
  */
-void binary(unsigned int n)
+void binary(unsigned int num)
 {
-	if (n > 1)
+	if (num > 1)
 	{
-		binary(n / 2);
+		binary(num / 2);
 	}
-	_putchar('0' + (n % 2));
+	_putint(num % 2);
 }
 /**
  * handle_format_specifier - handles format specifier and writes to stdout
@@ -88,15 +88,18 @@ int handle_format_specifier(char spec, va_list ap)
 		num += _putint(va_arg(ap, int));
 		break;
 	case 'b':
-		binary(abs(num));
-		_putchar(num);
-		num++;
+		binary(va_arg(ap, unsigned int));
+		break;
+	case 'u':
+		num += _putuint(va_arg(ap, unsigned int));
 		break;
 	case '%':
 		num = _putchar('%');
 		break;
 	default:
-		break;
+		_putchar('%');
+		_putchar(spec);
+		num += 2;
 	}
 	return (num);
 }
@@ -123,7 +126,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			num += _putchar(*format);
+			_putchar(*format);
+			num++;
 		}
 		format++;
 	}
