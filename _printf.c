@@ -89,7 +89,8 @@ int handle_format_specifier(char spec, va_list ap)
 		break;
 	case 'b':
 		binary(abs(num));
-		num += _putchar(num);
+		_putchar(num);
+		num++;
 		break;
 	case '%':
 		num = _putchar('%');
