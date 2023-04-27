@@ -99,7 +99,7 @@ int handle_format_specifier(char spec, va_list ap)
 	default:
 		_putchar('%');
 		_putchar(spec);
-		num += 2;
+		num += num;
 	}
 	return (num);
 }
