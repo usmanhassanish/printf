@@ -15,21 +15,7 @@
  */
 int _putchar(char c)
 {
-	static char buffer[1024];
-	size_t buffer_index = 0;
-
-	buffer[buffer_index++] = c;
-	if (buffer_index == sizeof(buffer))
-	{
-		ssize_t bytes_written = write(STDOUT_FILENO, buffer, sizeof(buffer));
-
-		if (bytes_written == -1)
-		{
-			return (-1);
-		}
-		buffer_index = 0;
-	}
-	return (0);
+	return (write(1, &c, 1));
 }
 /**
  * _putint - writes the integer n to stdout
