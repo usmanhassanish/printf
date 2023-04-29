@@ -48,7 +48,7 @@ int _putint(int n)
 }
 /**
  * _putuint - writes the unsigned integer n to stdout
- * @n: The unsigned integer to printhttps://www.scaler.com/topics/c/macros-in-c/
+ * @n: The unsigned integer to print
  *
  * Return: On success the number of characters printed.
  * On error, -1 is returned, and errno is set appropriately.
