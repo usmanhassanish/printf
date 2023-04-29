@@ -90,9 +90,6 @@ int handle_format_specifier(char spec, va_list ap)
 	case 'b':
 		binary(va_arg(ap, unsigned int));
 		break;
-	case 'u':
-		num += _putuint(va_arg(ap, unsigned int));
-		break;
 	case '%':
 		num = _putchar('%');
 		break;
@@ -134,3 +131,4 @@ int _printf(const char *format, ...)
 	va_end(ap);
 	return (num);
 }
+
