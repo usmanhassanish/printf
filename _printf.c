@@ -101,6 +101,9 @@ int handle_format_specifier(char spec, va_list ap)
 	case 'u':
 		num += _putuint(va_arg(ap, unsigned int));
 		break;
+	case 'o':
+		num += _putoct(va_arg(ap, unsigned int));
+		break;
 	case '%':
 		num = _putchar('%');
 		break;
