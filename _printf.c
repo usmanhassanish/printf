@@ -15,7 +15,8 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, sizeof(BUFFER_SIZE)));
+	char buffer[1024];
+	return (write(1, &c, sizeof(buffer)));
 }
 
 /**
