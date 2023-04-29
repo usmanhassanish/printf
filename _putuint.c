@@ -1,3 +1,5 @@
+#include "main.h"
+#include <stdio.h>
 /**
  * _putuint - writes the unsigned integer n to stdout
  * @n: The unsigned integer to print
