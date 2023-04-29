@@ -47,30 +47,6 @@ int _putint(int n)
 	return (len);
 }
 /**
- * _putuint - writes the unsigned integer n to stdout
- * @n: The unsigned integer to print
- *
- * Return: On success the number of characters printed.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putuint(unsigned int n)
-{
-	unsigned int div = 1;
-	int len = 0;
-
-	while (n / div >= 10)
-	{
-		div *= 10;
-	}
-	while (div != 0)
-	{
-		len += _putchar((n / div) + '0');
-		n %= div;
-		div /= 10;
-	}
-	return (len);
-}
-/**
  * handle_format_specifier - handles format specifier and writes to stdout
  * @spec: format specifier character
  * @ap: va_list argument pointer
@@ -100,9 +76,6 @@ int handle_format_specifier(char spec, va_list ap)
 		break;
 	case 'b':
 		binary(va_arg(ap, unsigned int));
-		break;
-	case 'u':
-		_putuint(va_arg(ap, unsigned int));
 		break;
 	case '%':
 		num = _putchar('%');
