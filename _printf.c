@@ -48,7 +48,7 @@ int _putint(int n)
 }
 /**
  * _putuint - writes the unsigned integer n to stdout
- * @n: The unsigned integer to print
+ * @n: The unsigned integer to printhttps://www.scaler.com/topics/c/macros-in-c/
  *
  * Return: On success the number of characters printed.
  * On error, -1 is returned, and errno is set appropriately.
@@ -100,9 +100,6 @@ int handle_format_specifier(char spec, va_list ap)
 		break;
 	case 'u':
 		num += _putuint(va_arg(ap, unsigned int));
-		break;
-	case 'o':
-		num += _putoct(va_arg(ap, unsigned int));
 		break;
 	case '%':
 		num = _putchar('%');
