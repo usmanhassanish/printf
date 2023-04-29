@@ -15,7 +15,7 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	return (write(1, &c, sizeof(BUFFER_SIZE)));
 }
 
 /**
@@ -45,19 +45,6 @@ int _putint(int n)
 		div /= 10;
 	}
 	return (len);
-}
-/**
- * binary - converts to binary
- * @num: int
- * Return: void
- */
-void binary(unsigned int num)
-{
-	if (num > 1)
-	{
-		binary(num / 2);
-	}
-	_putint(num % 2);
 }
 /**
  * handle_format_specifier - handles format specifier and writes to stdout
