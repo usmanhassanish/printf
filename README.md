@@ -1,8 +1,4 @@
-vgv gfsvvfdgCUSTOM PRINTF PROJECT BY USMAN AND ESTHER
-ff
-ff
-fdffd
-svvfvvgdgfsvcaf
-fddsvfsavfcfvfvsg
-gsvsgdv
-zvc v vfgbv
+OUR CUSTOM PRINTF FUNCTION(USMAN AND ESTHER)
+
+TASK 1: handles three formart specifiers: %, c, s
+TASK 2: handles two format specifiers: d and i
