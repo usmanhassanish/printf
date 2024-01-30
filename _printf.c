@@ -47,11 +47,6 @@ int _printf(const char *format, ...)
 				charsP++;
 				i++;
 			}
-			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
-			{
-				printDigits(va_arg(ap, int));
-				i++;
-			}
 		}
 		i++;
 	}
