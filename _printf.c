@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 's')
 			{
-				char *str = va_arg(ap, char*);
+				char *str = va_arg(ap, char *);
 				int k = 0;
 
 				while (str[k] != '\0')
@@ -41,10 +41,15 @@ int _printf(const char *format, ...)
 				}
 				i++;
 			}
+			else if (format[i + 1] == '%')
+			{
+				_putchar('%');
+				charsP++;
+				i++;
+			}
 		}
 		i++;
 	}
 	va_end(ap);
-	printf("%d\n", charsP - 1);
 	return (charsP);
 }
