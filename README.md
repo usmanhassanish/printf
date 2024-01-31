@@ -2,4 +2,4 @@
 
 "TASK 1: handles three formart specifiers: %, c, s"
 
-TASK 2: handles two format specifiers: d and i
+TASK 2: handles two format specifiers: d and i"
