@@ -1,4 +1,4 @@
-iiiiOUR CUSTOM PRINTF FUNCTION(USMAN AND ESTHER)
+iiOUR CUSTOM PRINTF FUNCTION(USMAN AND ESTHER)
 
 TASK 1: handles three formart specifiers: %, c, s
 
